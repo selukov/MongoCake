@@ -90,7 +90,9 @@ class CakeMongoSource extends DataSource {
 		if (Configure::read('debug') === 0) {
 			$configuration->setAutoGenerateHydratorClasses(false);
 			$configuration->setAutoGenerateProxyClasses(false);
-			$configuration->setMetadataCacheImpl(new ApcCache());
+			$ApcCache = new ApcCache();
+			$ApcCache->setNamespace('beauty');
+			$configuration->setMetadataCacheImpl($ApcCache);
 		}
 
 		$this->configuration = $configuration;
